@@ -174,6 +174,7 @@ func (c *Client) callAPI(ctx context.Context, r *request, opts ...RequestOption)
 		e := json.Unmarshal(data, apiErr)
 		if e != nil {
 			c.debug("failed to unmarshal json: %s", err)
+			apiErr.Message = string(data)
 		}
 		return nil, apiErr
 	}
@@ -293,4 +294,8 @@ func (c *Client) NewCloseUserStreamService() *CloseUserStreamService {
 // NewExchangeInfoService init exchange info service
 func (c *Client) NewExchangeInfoService() *ExchangeInfoService {
 	return &ExchangeInfoService{c: c}
+}
+
+func (c *Client) NewListProductService() *ListProductService {
+	return &ListProductService{c: c}
 }
