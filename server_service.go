@@ -90,9 +90,31 @@ type SymbolUnit struct {
 	Filters            []SymbolFilter `json:"filters"`
 }
 
+type RateLimitInterval string
+
+const (
+	RateLimitIntervalMinute RateLimitInterval = "MINUTE"
+	RateLimitIntervalHour   RateLimitInterval = "HOUR"
+	RateLimitIntervalDay    RateLimitInterval = "DAY"
+)
+
+type RateLimitType string
+
+const (
+	RateLimitTypeRequests RateLimitType = "REQUESTS"
+	RateLimitTypeOrders   RateLimitType = "ORDERS"
+)
+
+type RateLimit struct {
+	Type     RateLimitType     `json:"rateLimitType"`
+	Interval RateLimitInterval `json:"interval"`
+	Limit    int               `json:"limit"`
+}
+
 type ExchangeInfo struct {
 	Timezone   string       `json:"timezone"`
 	ServerTime int64        `json:"serverTime"`
+	RateLimits []RateLimit  `json:"rateLimits"`
 	Symbols    []SymbolUnit `json:"symbols"`
 }
 
