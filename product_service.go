@@ -70,7 +70,7 @@ type Product struct {
 	WithdrawFee      float64 `json:"withdrawFee,string"`
 	TickSize         float64 `json:"tickSize,string"`
 	PrevClose        float64 `json:"prevClose"`
-	ActiveBuy        int64   `json:"activeBuy"`
+	ActiveBuy        float64 `json:"activeBuy"`
 	Volume           float64 `json:"volume,string"`
 	High             float64 `json:"high,string"`
 	LastAggTradeId   int64   `json:"lastAggTradeId"`
